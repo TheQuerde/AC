@@ -1,0 +1,44 @@
+1.
+  -23,75
+  Signo : 1 (negativo)
+  Parte entera : 23-16 = 7; 7-4 = 3; 3-2 = 1; 1-1 = 0; => 10111
+  Parte decimal : 0.75*2 = 1.5; 0.5*2 =  1; => 11
+  10111.11
+  Simple precisión:
+    Mantisa = 01111100000000000000000
+    Exponente = 127+4 = 131: 131-128 = 3; 3-2 = 1; 1-1 = 0 => 10000011
+    Representación en binario :
+    11000001101111100000000000000000
+    En hexadecimal :
+    C1BE0000
+  Doble precisión:
+    Mantisa = 01111100000000000000000000000000000000000000000000000
+    Exponente = 1023+4 = 1027: 1027-1024 = 3; 3-2 = 1; 1-1 = 0 => 10000000011
+    Representación en binario :
+    11000000001101111100000000000000000000000000000000000000000000000
+    En hexadecimal :
+    C037C00000000000
+
+2.
+  No se puede ya que la representación de los decimales en binario es periódica.
+  La parte decimal sigue este patrón: 00101... y los 20 bits mas altos de la mantisa son de la parte entera.
+  Por lo tanto solo nos cabrán 3 bits de parte decimal (001) que equivale a 0,125.
+  El error sera 0.2-0.125 = 0,075 (usando redondeo al ultimo bit).
+  En doble precisión solo lograremos que el error sea mas bajo ya que 0,2 necesita infinitos bits para representarse.
+
+
+3.
+  flds: Cargar un valor de simple precisión
+  fmuls: Multiplica valores de simple precisión
+  fadds: Multiplica valores de simple precisión
+  fstps: Guardar el valor de simple precisión top de la pila y expulsarlo.
+
+4.
+  ASM 1:
+    2+13*256 = 3330
+    3330/2.6 = 1280,769230769 MIPS
+    256*2/2.6 = 196,923076923 FLOPS
+  ASM 2:
+    3+7*256 = 1795
+    1795/2.2 = 815,909090909 MIPS
+    256*2/2.2 = 232,727272727 FLOPS
